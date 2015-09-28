@@ -26,7 +26,7 @@ public:
 	void estSuccesseur(Sommet a, Sommet b);
 	int getDegreEntrant(int i);
 	int getDegreSortant(int i);
-	void enregistrerGraphe(Graphe g, std::string nomFichier);
+	void enregistrerGraphe(Graphe g, string nomFichier);
 };
 
 

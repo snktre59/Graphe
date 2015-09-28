@@ -44,6 +44,6 @@ int main() {
 
     g.estPredecesseur(C, D);
 
-    g.enregistrerGraphe(g, "Test");
+    g.enregistrerGraphe(g, "Testi");
     return 0;
 }
