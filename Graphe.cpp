@@ -23,6 +23,12 @@ void Graphe::afficherSommets(){
     cout << endl;
 }
 
+void Graphe::setNewSommet(string name){
+	Sommet * nouveauSommetAvecUnNom;
+	nouveauSommetAvecUnNom = new Sommet(name);
+	this->tabSommets.push_back(nouveauSommetAvecUnNom);
+}
+
 vector<Sommet*> Graphe::getTabSommets(){
     return this->tabSommets;
 }

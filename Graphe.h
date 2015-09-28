@@ -21,6 +21,7 @@ public:
     Graphe();
     int getNbSommets();
     void setNewSommet(Sommet* a);
+	void setNewSommet(string name);
     void afficherSommets();
     vector<Sommet*> getTabSommets();
     Sommet getTabIndexSommets(int i);
