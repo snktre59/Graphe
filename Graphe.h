@@ -11,6 +11,7 @@ private:
 
 	vector<Sommet*> tabSommets;
 	bool isSommetIn(Sommet a);
+
 public:
 	Graphe();
 	Sommet* getSommet(string name);
@@ -27,6 +28,8 @@ public:
 	int getDegreEntrant(int i);
 	int getDegreSortant(int i);
 	void enregistrerGraphe(Graphe g, string nomFichier);
+
+    //Faire
 };
 
 

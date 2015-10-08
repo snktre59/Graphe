@@ -34,6 +34,8 @@ Sommet Sommet::getPredecesseur(int i){
     return this->predecesseurs[i];
 }
 
+/** SETTERS **/
+
 void Sommet::setPredecesseur(Sommet& a) {
     if(!estPredecesseur(a)) {
         this->predecesseurs.push_back(a);
@@ -45,6 +47,8 @@ void Sommet::setSuccesseur(Sommet& a) {
         this->successeurs.push_back(a);
     }
 }
+
+/** BOOLEANS **/
 
 bool Sommet::estPredecesseur(Sommet a){
     for (vector<Sommet>::iterator i=this->predecesseurs.begin(); i != this->predecesseurs.end(); i++){
@@ -62,6 +66,8 @@ bool Sommet::estSuccesseur(Sommet a){
     }
     return false;
 }
+
+/** SURCHARGE D'OPERATEUR **/
 
 bool Sommet::operator==(Sommet const& a) const {
     return a.nom == this->nom;
