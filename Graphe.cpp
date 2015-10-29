@@ -20,21 +20,41 @@ void Graphe::setNewSommet(string name){
 			this->tabSommets.push_back(nouveauSommetAvecUnNom);
 }
 
+void Graphe::delSommet(Sommet* a){
+	vector<Sommet *>::iterator k;
+	for (int i = 0; i < a->getDegreEntrant(); i++){
+		a->getPredecesseurs()[i]->delSuccesseur(a);
+	}
+	for (int i = 0; i < a->getDegreSortant() ; i++){
+		a->getSuccesseurs()[i]->delPredecesseur(a);
+	}
+	for (vector<Sommet *>::iterator i = this->tabSommets.begin(); i != this->tabSommets.end(); i++){
+		if ((*i)== a){
+			k = i;
+		}
+	}
+	this->tabSommets.erase(k);
+}
+
+void Graphe::delSommet(string name){
+	this->delSommet(this->getSommet(name));
+}
+
 void Graphe::setNewArc(Sommet* predecesseur, Sommet* successeur){
-	if (isSommetIn(*predecesseur) && isSommetIn(*successeur)){
-		cout << "Nouvel arc entre le sommet " << (*predecesseur).getNom() << " et le sommet " << (*successeur).getNom() << "." << endl;
+	if (isSommetIn(predecesseur) && isSommetIn(successeur)){
+		cout << "Nouvel arc entre le sommet " << predecesseur->getNom() << " et le sommet " << successeur->getNom() << "." << endl;
 		cout << "    " << predecesseur->getNom() << " -----> " << successeur->getNom() << endl;
-		predecesseur->setSuccesseur(*successeur);
-		successeur->setPredecesseur(*predecesseur);
+		predecesseur->setSuccesseur(successeur);
+		successeur->setPredecesseur(predecesseur);
 	}
 	else{
 		cout << "Au moins l'un des sommets (" << predecesseur->getNom() << ", " << successeur->getNom() << ") n'est pas pr�sent dans le graphe, veuillez l'ajouter avant de d�finir l'arc." << endl;
 	}
 
 }
-bool Graphe::isSommetIn(Sommet a){
+bool Graphe::isSommetIn(Sommet* a){
 	for (vector<Sommet *>::iterator i = this->tabSommets.begin(); i != this->tabSommets.end(); i++){
-		if (**i == a){
+		if (*i == a){
 			return true;
 		}											
 	}
@@ -52,8 +72,8 @@ vector<Sommet*> Graphe::getTabSommets(){
 	return this->tabSommets;
 }
 
-Sommet Graphe::getTabIndexSommets(int i){
-	return *this->tabSommets[i];
+Sommet * Graphe::getTabIndexSommets(int i){
+	return this->tabSommets[i];
 }
 
 Sommet * Graphe::getSommet(string name){
@@ -65,25 +85,25 @@ Sommet * Graphe::getSommet(string name){
 	return NULL;
 }
 
-bool Graphe::estConnecte(Sommet a, Sommet b) {
-	return a.estPredecesseur(b) || a.estSuccesseur(b);
+bool Graphe::estConnecte(Sommet* a, Sommet* b) {
+	return a->estPredecesseur(b) || a->estSuccesseur(b);
 }
 
-void Graphe::estPredecesseur(Sommet a, Sommet b){
-	if (a.estPredecesseur(b)){
-		cout << a.getNom() << " est le prédécesseur de " << b.getNom() << endl;
+void Graphe::estPredecesseur(Sommet* a, Sommet* b){
+	if (a->estPredecesseur(b)){
+		cout << a->getNom() << " est le prédécesseur de " << b->getNom() << endl;
 	}
 	else {
-		cout << a.getNom() << " n'est pas le prédécesseur de " << b.getNom() << endl;;
+		cout << a->getNom() << " n'est pas le prédécesseur de " << b->getNom() << endl;;
 	}
 }
 
-void Graphe::estSuccesseur(Sommet a, Sommet b){
-	if (a.estSuccesseur(b)){
-		cout << a.getNom() << " est le successeur de " << b.getNom() << endl;
+void Graphe::estSuccesseur(Sommet* a, Sommet* b){
+	if (a->estSuccesseur(b)){
+		cout << a->getNom() << " est le successeur de " << b->getNom() << endl;
 	}
 	else {
-		cout << a.getNom() << " n'est pas le successeur de " << b.getNom() << endl;;
+		cout << a->getNom() << " n'est pas le successeur de " << b->getNom() << endl;;
 	}
 }
 
