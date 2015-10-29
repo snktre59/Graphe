@@ -26,6 +26,14 @@ vector<Sommet*> Sommet::getTabSuccesseurs(){
     return this->successeurs;
 }
 
+int Sommet::getDegreEntrant(){
+	return this->predecesseurs.size();
+}
+
+int Sommet::getDegreSortant() {
+	return this->successeurs.size();
+}
+
 Sommet* Sommet::getSucesseur(int i){
     return this->successeurs[i];
 }
@@ -34,15 +42,22 @@ Sommet* Sommet::getPredecesseur(int i){
     return this->predecesseurs[i];
 }
 
+int Sommet::getDegreEntrant(){
+	return this->predecesseurs.size();
+}
+
+int Sommet::getDegreSortant(){
+	return this->successeurs.size();
+}
 /** SETTERS **/
 
-void Sommet::setPredecesseur(Sommet a) {
+void Sommet::setPredecesseur(Sommet* a) {
     if(!estPredecesseur(a)) {
         this->predecesseurs.push_back(a);
     }
 }
 
-void Sommet::setSuccesseur(Sommet a) {
+void Sommet::setSuccesseur(Sommet* a) {
     if(!estSuccesseur(a)){
         this->successeurs.push_back(a);
     }

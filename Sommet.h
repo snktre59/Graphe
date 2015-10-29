@@ -59,6 +59,17 @@ public:
      */
     string getNom();
 
+	/**
+	 *Retourne le degré entrant du sommet
+	 */
+	int getDegreEntrant();
+	
+	/**
+	 * Retourne le degré sortant du sommet
+	 */ 
+	 int getDegreSortant();
+	 
+	
     /**
      * Retourne le tableau des prédecesseurs du sommet
      */
